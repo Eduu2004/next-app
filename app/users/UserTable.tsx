@@ -17,9 +17,7 @@ const UserTable = async ({ sortOrder }: Props) => {
   const users: User[] = await res.json();
 
   const sortedUsers = sort(users).asc(
-    sortOrder === "email"
-    ? (user) => user.email
-    : (user) => user.name
+    sortOrder === "email" ? (user) => user.email : (user) => user.name
   );
 
   return (
