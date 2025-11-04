@@ -1,13 +1,11 @@
-import React from 'react'
+import React from "react";
 
 interface Props {
-    params: { id: number }
+  params: { id: number };
 }
 
-const UserDetailPage = ({ params: {id} }: Props) => {
-  return (
-    <div>UserDetailPage {id}</div>
-  )
-}
+const UserDetailPage = ({ params: { id } }: Props) => {
+  return <div>UserDetailPage {id}</div>;
+};
 
-export default UserDetailPage
+export default UserDetailPage;
