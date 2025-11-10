@@ -33,9 +33,22 @@ export const authOptions: NextAuthOptions = {
     ],
     session: {
         strategy: "jwt"
-    }    
-
+    },
+    pages: {
+       signIn: '/auth/signin',
+    },
+    callbacks: {
+        async redirect({ url, baseUrl }) {
+            // Si la URL es relativa, úsala
+            if (url.startsWith("/")) return `${baseUrl}${url}`;
+            // Si la URL pertenece al mismo sitio, úsala
+            else if (new URL(url).origin === baseUrl) return url;
+            // Sino, redirige a la página principal
+            return baseUrl;
+        }
+    }
 }
+
 const handler = NextAuth(authOptions)
 
 export { handler as GET, handler as POST }
